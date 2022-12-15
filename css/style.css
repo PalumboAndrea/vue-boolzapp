@@ -73,11 +73,36 @@ ul{
 }
 
 .contact{
-    background-color: green;
     height: var(--contact-height);
     width: 100%;
     border-top: 1px solid lightgrey;
+    display: flex;
+    position: relative;
+}
+
+.contact:last-child{
     border-bottom: 1px solid lightgrey;
+}
+
+.contact img{
+    height: 100%;
+    width: 70px;
+    border-radius: 50%;
+}
+
+.last-message{
+    color: lightgrey;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.time{
+    font-size: 0.7rem;
+    color: lightgrey;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 /* chat part */

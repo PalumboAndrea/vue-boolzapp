@@ -38,8 +38,20 @@
                             </div>
                             <ul class="chat-list">
                                 <li class="contact" v-for="(element, index) in contacts">
-                                    <img src="./img/avatar${element.avatar}.jpg" alt="">
-                                   {{element.avatar}}
+                                    <img :src="'./img/avatar' + element.avatar + '.jpg'" alt="">
+                                    <div>
+                                        <p class="contact-name">
+                                            {{element.name}}
+                                        </p>
+                                        <p class="last-message">
+                                            {{element.messages[element.messages.length - 1].message}}
+                                        </p>
+                                        <span class="time">
+                                            {{element.messages[element.messages.length - 1].date}}
+                                        </span>
+                                    </div>
+                                    
+                          
 
                                 </li>
                             </ul>
