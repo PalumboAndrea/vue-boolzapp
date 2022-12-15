@@ -37,7 +37,10 @@
 
                             </div>
                             <ul class="chat-list">
+                                <li class="contact" v-for="(element, index) in contacts">
+                                    <img :src="element.avatar" alt="">
 
+                                </li>
                             </ul>
 
                         </div>
@@ -50,6 +53,28 @@
                         </div>
                         <div class="chat-container">
                             <div class="chat">
+                                <div class="message-container">
+                                    <div class="sent-message-container">
+                                        <ul>
+                                            <li class="sent-message">
+
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="received-message-container">
+                                        <ul>
+                                            <li class="received-message">
+
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+
+
+
                                 
                             </div>
                             <div class="chat-footer">
