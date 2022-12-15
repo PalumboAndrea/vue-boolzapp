@@ -38,7 +38,8 @@
                             </div>
                             <ul class="chat-list">
                                 <li class="contact" v-for="(element, index) in contacts">
-                                    <img :src="element.avatar" alt="">
+                                    <img src="./img/avatar${element.avatar}.jpg" alt="">
+                                   {{element.avatar}}
 
                                 </li>
                             </ul>
