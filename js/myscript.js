@@ -81,6 +81,7 @@ createApp({
             and for the chat's messages.
         */
         getElementActive: function(index){
+            this.arrayForActiveIndex.splice(0, 1);
             for (i=0; i<this.contacts.length; i++){
                 if (this.contacts[i].visible === true){
                     this.contacts[i].visible = !this.contacts[i].visible;
@@ -89,6 +90,7 @@ createApp({
             this.contacts[index].visible = !this.contacts[index].visible;
             this.arrayForActiveIndex.push(this.contacts[index]);
             console.log(this.arrayForActiveIndex);
+            console.log(this.arrayForActiveIndex[0].messages[0].message);
         },
     },
 }).mount('#app')

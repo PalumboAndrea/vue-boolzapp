@@ -67,26 +67,23 @@
                                     </span>
                                 </div>
                             </div>
-
                         </div>
                         <div class="chat-container">
                             <div class="chat">
                                 <div class="message-container">
                                     <div class="sent-message-container">
                                         <ul>
-                                            <li class="sent-message">
-
+                                            <template v-for="(element, index) in arrayForActiveIndex">
+                                            <li v-for="(element, index) in element.messages"
+                                            :class="(element.status == 'sent') ? 'sent-message offset-7' : 'received-message col-4' "
+                                            >
+                                            {{element.message}}
                                             </li>
+                                            </template>
                                         </ul>
 
                                     </div>
-                                    <div class="received-message-container">
-                                        <ul>
-                                            <li class="received-message">
-
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    
 
                                 </div>
 
