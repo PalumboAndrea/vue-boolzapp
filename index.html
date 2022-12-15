@@ -38,8 +38,6 @@
                                 <i class="fa-solid fa-message"></i>
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </div>
-                            
-                           
                         </div>
                         <div class="disable-notifications d-flex align-items-center">
                             <i class="fa-solid fa-bell-slash"></i>
@@ -51,13 +49,16 @@
                             </div>
                         </div>
                         <div class="chat-list-container">
-                            <div class="search-bar">
-
+                            <div class="search-bar d-flex align-items-center justify-content-center">
+                                <div class="d-flex align-items-center justify-content-center justify-content-around">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text" placeholder="Cerca o inizia una nuova chat" id="">
+                                </div>
                             </div>
                             <ul class="chat-list">
                                 <li class="contact p-2 d-flex align-items-center" v-for="(element, index) in contacts"
                                 @click="getElementActive(index)"
-                                :class="(element.visible === true) ? 'background-grey' : ''">
+                                :class="(element.visible === true) ? 'background-grey border border-0' : ''">
                                     <img :src="'./img/avatar' + element.avatar + '.jpg'" alt="" class="me-2">
                                     <div>
                                         <p class="contact-name">
@@ -76,19 +77,29 @@
                     </div>
 
                     <div class="chat-right-part">
+
                         <div class="contact-info-container">
-                            <div class="contact-info p-2 d-flex" v-for="(element, index) in arrayForActiveIndex">
-                                <img :src="'./img/avatar' + element.avatar + '.jpg'" alt="">
-                                <div class="d-flex flex-column justify-content-center">
-                                    <p class="contact-name m-0">
-                                        {{element.name}}
-                                    </p>
-                                    <span>
-                                        Ultimo accesso oggi alle {{getTimeFormat(element)}}
-                                    </span>
+                            <div class="contact-info p-2 d-flex justify-content-between" v-for="(element, index) in arrayForActiveIndex">
+                                <div class="d-flex">
+                                    <img :src="'./img/avatar' + element.avatar + '.jpg'" alt="">
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <p class="contact-name m-0">
+                                            {{element.name}}
+                                        </p>
+                                        <span>
+                                            Ultimo accesso oggi alle {{getTimeFormat(element)}}
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="icons-container d-flex align-items-center">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <i class="fa-solid fa-paperclip"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </div>
                             </div>
                         </div>
+
                         <div class="chat-container">
                             <div class="chat">
                                 <div class="message-container">
@@ -105,8 +116,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="chat-footer">
-
+                            <div class="chat-footer d-flex justify-content-between align-items-center px-3">
+                                <i class="fa-regular fa-face-smile"></i>
+                                <input type="text" placeholder="Scrivi un messaggio" id="">
+                                <i class="fa-solid fa-microphone"></i>
                             </div>
 
 

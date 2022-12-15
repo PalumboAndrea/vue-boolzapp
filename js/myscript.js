@@ -92,7 +92,6 @@ createApp({
         },
         getTimeFormat: function(element){
             let dateAndTIme = element.messages[element.messages.length - 1].date.split(' ');
-
             let time = dateAndTIme[1].split(':');
             time = time[0] + ':' + time[1];
             return time

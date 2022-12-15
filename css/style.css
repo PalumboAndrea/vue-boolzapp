@@ -1,7 +1,7 @@
 :root {
     --user-info-height: 60px;
     --disable-notifications-height: 70px;
-    --chat-footer-height: 40px;
+    --chat-footer-height: 50px;
     --contact-height: 70px;
   }
 
@@ -25,7 +25,8 @@ img{
 i{
     color: rgb(176,176,176);
     font-size: 1.2rem;
-    margin: 5px;
+    margin: 8px;
+    cursor: pointer;
 }
 
 p{
@@ -101,10 +102,6 @@ p{
     color: grey;
 }
 
-.contact-info{
-    height: 100%;
-}
-
 /* contacts list */
 
 .chat-list-container{
@@ -117,21 +114,30 @@ p{
     background-color: rgb(250,250,250);
 }
 
+.search-bar div{
+    height: 70%;
+    width: 95%;
+    background-color: white;
+    border-radius: 5px;
+}
+
 .contact{
     height: var(--contact-height);
     width: 100%;
-    border-top: 1px solid lightgrey;
+    border-top: 0.5px solid rgba(211, 211, 211, 0.5);
     display: flex;
     position: relative;
     cursor: pointer;
 }
 
-.background-grey{
+.background-grey,
+.contact:hover
+{
     background-color: rgb(232,235,235);
 }
 
 .contact:last-child{
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.5);
 }
 
 .contact img{
@@ -139,8 +145,9 @@ p{
     width: 50px;
 }
 
-.last-message{
-    color: lightgrey;
+.last-message,
+.contact-info span{
+    color: rgb(185, 185, 185);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -159,6 +166,15 @@ p{
 .chat-container{
     height: calc(100% - var(--user-info-height));
     position: relative;
+}
+
+.contact-info{
+    height: 100%;
+}
+
+.icons-container{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .chat{
@@ -202,6 +218,14 @@ p{
     height: var(--chat-footer-height);
     width: 100%;
     background-color: rgb(243,238,233);
+}
+
+.chat-footer input,
+.search-bar input{
+    width: 85%;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 
