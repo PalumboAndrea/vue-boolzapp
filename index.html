@@ -73,6 +73,7 @@
                                     </div>
                                 </li>
                             </ul>
+                        
                         </div>
                     </div>
 
@@ -118,29 +119,15 @@
                             </div>
                             <div class="chat-footer d-flex justify-content-between align-items-center px-3">
                                 <i class="fa-regular fa-face-smile"></i>
-                                <input type="text" placeholder="Scrivi un messaggio" id="">
+                                <input type="text" placeholder="Scrivi un messaggio" id="" v-model="newMessage" v-on:keyup.enter="sendNewMessage">
                                 <i class="fa-solid fa-microphone"></i>
                             </div>
-
-
-
-
                         </div>
                     </div>
-
-
                 </div>
-
 
                 <div class="upper-background"></div>
                 <div class="lower-background"></div>
-
-
-
-
-
-
-
 
             </main>
 

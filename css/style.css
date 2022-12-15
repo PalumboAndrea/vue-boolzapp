@@ -184,6 +184,12 @@ p{
     height: calc(100% - var(--chat-footer-height));
     width: 100%;
     background-image: url(../img/mine.jpg);
+    overflow-y: scroll;
+    padding: 20px 0;
+}
+
+.chat ul{
+    height: 100%;
 }
 
 .message-container{

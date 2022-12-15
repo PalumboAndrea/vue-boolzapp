@@ -72,6 +72,7 @@ createApp({
                 },
             ],
             arrayForActiveIndex: [],
+            newMessage: '',
         }
     },
     methods: {
@@ -96,6 +97,26 @@ createApp({
             time = time[0] + ':' + time[1];
             return time
         },
+        receivedNewMessage: function(){
+            this.arrayForActiveIndex[0].messages.push({
+            date: '15/12/2022 18:15:01',
+            message: 'ok',
+            status: 'received' });
+            
+        },
+        sendNewMessage: function(){
+            let chat = document.querySelector('.chat');
+            console.log(chat.scrollHeight);
+            chat.scrollTo(0, chat.scrollHeight*2);
+            this.arrayForActiveIndex[0].messages.push({
+            date: '15/12/2022 18:15:00',
+            message: this.newMessage,
+            status: 'sent' });
+            setTimeout(this.receivedNewMessage, 1000);
+            this.newMessage = '';
+            
+        },
+        
     },
     created(){
         this.getElementActive(0);
