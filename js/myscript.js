@@ -89,10 +89,18 @@ createApp({
             }
             this.contacts[index].visible = !this.contacts[index].visible;
             this.arrayForActiveIndex.push(this.contacts[index]);
-            console.log(this.arrayForActiveIndex);
-            console.log(this.arrayForActiveIndex[0].messages[0].message);
+        },
+        getTimeFormat: function(element){
+            let dateAndTIme = element.messages[element.messages.length - 1].date.split(' ');
+
+            let time = dateAndTIme[1].split(':');
+            time = time[0] + ':' + time[1];
+            return time
         },
     },
+    created(){
+        this.getElementActive(0);
+    }
 }).mount('#app')
 
 

@@ -18,6 +18,18 @@ ul{
 
 img{
     height: 100%;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+i{
+    color: rgb(176,176,176);
+    font-size: 1.2rem;
+    margin: 5px;
+}
+
+p{
+    margin: 0;
 }
 
 
@@ -38,7 +50,7 @@ img{
 
 /* main chat */
 
-#mian-chat-container{
+#main-chat-container{
     height: 95vh;
     width: 80%;
     position: absolute;
@@ -58,9 +70,13 @@ img{
 }
 
 .user-info,
-.contanct-info-container{
+.contact-info-container{
     background-color: rgb(234,234,234);
     height: var(--user-info-height);
+}
+
+.user-info div{
+    height: 100%;
 }
 
 .disable-notifications{
@@ -68,7 +84,24 @@ img{
     height: var(--disable-notifications-height);
 }
 
-.contanct-info{
+.disable-notifications i{
+    color: rgb(142,218,251);
+    height: 45px;
+    width: 45px;
+    font-size: 1.4rem;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+}
+
+.disable-notifications a{
+    color: grey;
+}
+
+.contact-info{
     height: 100%;
 }
 
@@ -90,6 +123,11 @@ img{
     border-top: 1px solid lightgrey;
     display: flex;
     position: relative;
+    cursor: pointer;
+}
+
+.background-grey{
+    background-color: rgb(232,235,235);
 }
 
 .contact:last-child{
@@ -98,8 +136,7 @@ img{
 
 .contact img{
     height: 100%;
-    width: 70px;
-    border-radius: 50%;
+    width: 50px;
 }
 
 .last-message{

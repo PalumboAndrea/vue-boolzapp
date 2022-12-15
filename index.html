@@ -23,21 +23,42 @@
 
             <main class="position-relative d-flex flex-column justify-content-center align-items-center">
 
-                <div id="mian-chat-container">
+                <div id="main-chat-container">
                     <div class="chat-left-part">
-                        <div class="user-info">
-
+                        <div class="user-info p-2 d-flex justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <img id="user-photo" src="./img/avatar_io.jpg" alt="">
+                                <p class="m-0">
+                                    Sofia
+                                </p>
+                            </div>
+                           
+                            <div class="icons d-flex align-items-center">
+                                <i class="fa-solid fa-spinner"></i>
+                                <i class="fa-solid fa-message"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                            
+                           
                         </div>
-                        <div class="disable-notifications">
-
+                        <div class="disable-notifications d-flex align-items-center">
+                            <i class="fa-solid fa-bell-slash"></i>
+                            <div>
+                                <p>
+                                    Ricevi notifiche di nuovi messaggi
+                                </p>
+                                <a href="#">Attiva notifiche desktop</a>
+                            </div>
                         </div>
                         <div class="chat-list-container">
                             <div class="search-bar">
 
                             </div>
                             <ul class="chat-list">
-                                <li class="contact" v-for="(element, index) in contacts" @click="getElementActive(index)">
-                                    <img :src="'./img/avatar' + element.avatar + '.jpg'" alt="">
+                                <li class="contact p-2 d-flex align-items-center" v-for="(element, index) in contacts"
+                                @click="getElementActive(index)"
+                                :class="(element.visible === true) ? 'background-grey' : ''">
+                                    <img :src="'./img/avatar' + element.avatar + '.jpg'" alt="" class="me-2">
                                     <div>
                                         <p class="contact-name">
                                             {{element.name}}
@@ -45,8 +66,8 @@
                                         <p class="last-message">
                                             {{element.messages[element.messages.length - 1].message}}
                                         </p>
-                                        <span class="time">
-                                            {{element.messages[element.messages.length - 1].date}}
+                                        <span class="time p-2">
+                                            {{getTimeFormat(element)}}
                                         </span>
                                     </div>
                                 </li>
@@ -55,15 +76,15 @@
                     </div>
 
                     <div class="chat-right-part">
-                        <div class="contanct-info-container">
-                            <div class="contanct-info p-2 d-flex" v-for="(element, index) in arrayForActiveIndex">
+                        <div class="contact-info-container">
+                            <div class="contact-info p-2 d-flex" v-for="(element, index) in arrayForActiveIndex">
                                 <img :src="'./img/avatar' + element.avatar + '.jpg'" alt="">
-                                <div>
+                                <div class="d-flex flex-column justify-content-center">
                                     <p class="contact-name m-0">
                                         {{element.name}}
                                     </p>
                                     <span>
-                                        Ultimo accesso oggi alle {{element.messages[element.messages.length - 1].date}}
+                                        Ultimo accesso oggi alle {{getTimeFormat(element)}}
                                     </span>
                                 </div>
                             </div>
@@ -75,22 +96,14 @@
                                         <ul>
                                             <template v-for="(element, index) in arrayForActiveIndex">
                                             <li v-for="(element, index) in element.messages"
-                                            :class="(element.status == 'sent') ? 'sent-message offset-7' : 'received-message col-4' "
+                                            :class="(element.status == 'sent') ? 'sent-message col-5 offset-7' : 'received-message col-5' "
                                             >
                                             {{element.message}}
                                             </li>
                                             </template>
                                         </ul>
-
                                     </div>
-                                    
-
                                 </div>
-
-
-
-
-                                
                             </div>
                             <div class="chat-footer">
 
