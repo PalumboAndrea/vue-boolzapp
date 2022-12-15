@@ -22,7 +22,6 @@
         <div id="app">
 
             <main class="position-relative d-flex flex-column justify-content-center align-items-center">
-                
 
                 <div id="mian-chat-container">
                     <div class="chat-left-part">
@@ -37,7 +36,7 @@
 
                             </div>
                             <ul class="chat-list">
-                                <li class="contact" v-for="(element, index) in contacts">
+                                <li class="contact" v-for="(element, index) in contacts" @click="getElementActive(index)">
                                     <img :src="'./img/avatar' + element.avatar + '.jpg'" alt="">
                                     <div>
                                         <p class="contact-name">
@@ -50,18 +49,24 @@
                                             {{element.messages[element.messages.length - 1].date}}
                                         </span>
                                     </div>
-                                    
-                          
-
                                 </li>
                             </ul>
-
                         </div>
-
                     </div>
 
                     <div class="chat-right-part">
-                        <div class="contanct-info">
+                        <div class="contanct-info-container">
+                            <div class="contanct-info p-2 d-flex" v-for="(element, index) in arrayForActiveIndex">
+                                <img :src="'./img/avatar' + element.avatar + '.jpg'" alt="">
+                                <div>
+                                    <p class="contact-name m-0">
+                                        {{element.name}}
+                                    </p>
+                                    <span>
+                                        Ultimo accesso oggi alle {{element.messages[element.messages.length - 1].date}}
+                                    </span>
+                                </div>
+                            </div>
 
                         </div>
                         <div class="chat-container">

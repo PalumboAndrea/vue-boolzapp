@@ -12,6 +12,10 @@ ul{
     padding: 0;
 }
 
+img{
+    height: 100%;
+}
+
 
 
 /* main background */
@@ -50,7 +54,7 @@ ul{
 }
 
 .user-info,
-.contanct-info{
+.contanct-info-container{
     background-color: rgb(234,234,234);
     height: var(--user-info-height);
 }
@@ -58,6 +62,10 @@ ul{
 .disable-notifications{
     background-color: rgb(142,218,251);
     height: var(--disable-notifications-height);
+}
+
+.contanct-info{
+    height: 100%;
 }
 
 /* contacts list */

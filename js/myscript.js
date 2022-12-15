@@ -71,11 +71,26 @@ createApp({
                     ],
                 },
             ],
+            arrayForActiveIndex: [],
         }
     },
     methods: {
-
-    }
+        /*  this function permit to change clicked contact visible data in true
+            and add the entire element to a new array (arrayForActiveIndex),
+            in this way I will be able to call that element for the contanct-info
+            and for the chat's messages.
+        */
+        getElementActive: function(index){
+            for (i=0; i<this.contacts.length; i++){
+                if (this.contacts[i].visible === true){
+                    this.contacts[i].visible = !this.contacts[i].visible;
+                }
+            }
+            this.contacts[index].visible = !this.contacts[index].visible;
+            this.arrayForActiveIndex.push(this.contacts[index]);
+            console.log(this.arrayForActiveIndex);
+        },
+    },
 }).mount('#app')
 
 
