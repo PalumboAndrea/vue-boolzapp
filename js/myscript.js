@@ -179,6 +179,7 @@ createApp({
             in this way I will be able to call that element for the contanct-info
             and for the chat's messages.*/
         getElementActive: function(index){
+            this.searchContact = '';
             console.log(index)
             for (i=0; i<this.contacts.length; i++){
                 if (this.contacts[i].visible === true){
@@ -188,15 +189,17 @@ createApp({
             this.contacts[index].visible = !this.contacts[index].visible;
             this.activeIndex = index;
         },
-        getElementActiveSearch: function(index){
-            console.log(index)
-            for (i=0; i<this.arrayForSearch.length; i++){
-                if (this.arrayForSearch[i].visible === true){
-                    this.arrayForSearch[i].visible = !this.arrayForSearch[i].visible;
+        searchTheContact: function(){
+            for (i=0; i<this.contacts.length; i++){
+                if (this.contacts[i].visible === true){
+                    this.contacts[i].visible = !this.contacts[i].visible;
                 }
             }
-            this.arrayForSearch[index].visible = !this.arrayForSearch[index].visible;
-            this.activeIndex = index;
+            for (i=0; i<this.contacts.length; i++){
+                if (this.contacts[i].name.toLowerCase().includes(this.searchContact) === true){
+                    this.contacts[i].visible = true;
+                }
+            }
         },
         getTimeFormat: function(element){
             let dateAndTIme = element.messages[element.messages.length - 1].date.split(' ');
@@ -220,16 +223,6 @@ createApp({
             status: 'sent' });
             setTimeout(this.receivedNewMessage, 1000);
             this.newMessage = '';
-        },
-        searchTheContact: function(){
-            this.arrayForSearch = [];
-            for (i=0; i<this.contacts.length; i++){
-                if (this.contacts[i].name.toLowerCase().includes(this.searchContact) === true){
-                    this.arrayForSearch.push(this.contacts[i]);
-                }
-            }
-            console.log(this.arrayForSearch);
-
         },
     },
     created(){
