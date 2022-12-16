@@ -70,17 +70,113 @@ createApp({
                         }
                     ],
                 },
+                {
+                    name: 'Alessandro B.',
+                    avatar: '_4',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Lo sai che ha aperto una nuova pizzeria?',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'Si, ma preferirei andare al cinema',
+                            status: 'received'
+                        }
+                    ],
+                },
+                {
+                    name: 'Alessandro L.',
+                    avatar: '_5',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Ricordati di chiamare la nonna',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'Va bene, stasera la sento',
+                            status: 'received'
+                        }
+                    ],
+                },
+                {
+                    name: 'Claudia',
+                    avatar: '_6',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Ciao Claudia, hai novità?',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'Non ancora',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:51:00',
+                            message: 'Nessuna nuova, buona nuova',
+                            status: 'sent'
+                        }
+                    ],
+                },
+                {
+                    name: 'Federico',
+                    avatar: '_7',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Fai gli auguri a Martina che è il suo compleanno!',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'Grazie per avermelo ricordato, le scrivo subito!',
+                            status: 'received'
+                        }
+                    ],
+                },
+                {
+                    name: 'Davide',
+                    avatar: '_8',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:51:00',
+                            message: 'OK!!',
+                            status: 'received'
+                        }
+                    ],
+                }
             ],
             arrayForActiveIndex: [],
+            arrayForSearch: [],
             newMessage: '',
+            searchContact: '',
         }
     },
     methods: {
         /*  this function permit to change clicked contact visible data in true
             and add the entire element to a new array (arrayForActiveIndex),
             in this way I will be able to call that element for the contanct-info
-            and for the chat's messages.
-        */
+            and for the chat's messages.*/
         getElementActive: function(index){
             this.arrayForActiveIndex.splice(0, 1);
             for (i=0; i<this.contacts.length; i++){
@@ -100,9 +196,8 @@ createApp({
         receivedNewMessage: function(){
             this.arrayForActiveIndex[0].messages.push({
             date: '15/12/2022 18:15:01',
-            message: 'ok',
+            message: 'OK!',
             status: 'received' });
-            
         },
         sendNewMessage: function(){
             let chat = document.querySelector('.chat');
@@ -114,9 +209,16 @@ createApp({
             status: 'sent' });
             setTimeout(this.receivedNewMessage, 1000);
             this.newMessage = '';
-            
         },
-        
+        searchTheContact: function(){
+            this.arrayForSearch = [];
+            for (i=0; i<this.contacts.length; i++){
+                if (this.contacts[i].name.toLowerCase().includes(this.searchContact) === true){
+                    this.arrayForSearch.push(this.contacts[i]);
+                }
+            }
+            console.log(this.arrayForSearch);
+        },
     },
     created(){
         this.getElementActive(0);
@@ -124,3 +226,5 @@ createApp({
 }).mount('#app')
 
 
+// SISTEMARE I VARI V-IF SULLA PARTE DESTRA DELLA CHAT
+// SISTEMARE LA FUNZIONE searchTheContact O FARNE UN'ALTRA ASSOCIATA A QUELLA

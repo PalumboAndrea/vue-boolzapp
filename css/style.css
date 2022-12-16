@@ -1,9 +1,12 @@
 :root {
     --user-info-height: 60px;
     --disable-notifications-height: 70px;
-    --chat-footer-height: 50px;
+    --chat-list-container-height: calc(100% - var(--disable-notifications-height) - var(--user-info-height));
+    --search-bar-height: 40px;
+    --chat-list-height: calc(100% - var(--search-bar-height));
     --contact-height: 70px;
-  }
+    --chat-footer-height: 50px;
+}
 
 *{
     font-size: 0.9rem;
@@ -106,11 +109,11 @@ p{
 
 .chat-list-container{
     background-color: white;
-    height: calc(100% - var(--disable-notifications-height) - var(--user-info-height));
+    height: var(--chat-list-container-height);
 }
 
 .search-bar{
-    height: 40px;
+    height: var(--search-bar-height);
     background-color: rgb(250,250,250);
 }
 
@@ -119,6 +122,12 @@ p{
     width: 95%;
     background-color: white;
     border-radius: 5px;
+}
+
+.chat-list{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: var(--chat-list-height);
 }
 
 .contact{
@@ -151,6 +160,7 @@ p{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 230px;
 }
 
 .time{
