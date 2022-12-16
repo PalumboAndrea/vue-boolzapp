@@ -166,11 +166,10 @@ createApp({
                     ],
                 }
             ],
-            
-            arrayForSearch: [],
             newMessage: '',
             searchContact: '',
             activeIndex: 0,
+            chatWidth: 0,
         }
     },
     methods: {
@@ -180,7 +179,6 @@ createApp({
             and for the chat's messages.*/
         getElementActive: function(index){
             this.searchContact = '';
-            console.log(index)
             for (i=0; i<this.contacts.length; i++){
                 if (this.contacts[i].visible === true){
                     this.contacts[i].visible = !this.contacts[i].visible;
@@ -212,10 +210,11 @@ createApp({
             date: '15/12/2022 18:15:01',
             message: 'OK!',
             status: 'received' });
+            this.chatWidth.scrollTo(0, 1000)
         },
         sendNewMessage: function(){
             let chat = document.querySelector('.chat');
-            console.log(chat.scrollHeight);
+            this.chatWidth = chat;
             chat.scrollTo(0, chat.scrollHeight*2);
             this.contacts[this.activeIndex].messages.push({
             date: '15/12/2022 18:15:00',
@@ -229,6 +228,4 @@ createApp({
         this.getElementActive(this.activeIndex);
     }
 }).mount('#app')
-
-// SISTEMARE LA FUNZIONE searchTheContact O FARNE UN'ALTRA ASSOCIATA A QUELLA
 
