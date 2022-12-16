@@ -221,15 +221,21 @@ p{
 .received-message{
     border-radius: 10px;
     padding: 10px;
-    margin-top: 10px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    clear: both;
 }
 
 .sent-message{
     background-color: rgb(213,249,186);
+    float: right;
 }
 
 .received-message{
     background-color: rgb(255,255,255);
+    float: left;
 }
 
 .chat-footer{
@@ -246,6 +252,15 @@ p{
     border: none;
     border-radius: 5px;
     padding: 5px;
+}
+
+.drop-down-menu i{
+  margin: 0 0 0 5px;
+  display: none;
+}
+
+.sent-message-container li:hover .drop-down-menu i{
+    display: block;
 }
 
 

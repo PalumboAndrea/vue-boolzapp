@@ -66,33 +66,10 @@
 
                             <!-- LIST OF ALL THE AVAILABLE CHATS -->
                             <ul class="chat-list">
-                                <!-- IF THE SEARCH BAR IS EMPTY IT WILL WORK THIS <LI> -->
                                 <li class="contact p-2 d-flex align-items-center"
-                                v-if="searchContact == ''"
                                 v-for="(element, index) in contacts"
                                 @click="getElementActive(index)"
-                                :class="(element.visible === true) ? 'background-grey border border-0' : ''"
-                                >
-                                    <img :src="'./img/avatar' + element.avatar + '.jpg'" alt="" class="me-2">
-                                    <div>
-                                        <p class="contact-name">
-                                            {{element.name}}
-                                        </p>
-                                        <p class="last-message">
-                                            {{element.messages[element.messages.length - 1].message}}
-                                        </p>
-                                        <span class="time p-3">
-                                            {{getTimeFormat(element)}}
-                                        </span>
-                                    </div>
-                                </li>
-                                <!-- IF THE USER TYPES SOMETHING IN THE SEARCH BAR IT WILL WORK THIS <LI> -->
-                                <li class="contact p-2 d-flex align-items-center"
-                                v-if="searchContact !== ''"
-                                v-for="(element, index) in contacts"
-                                @click="getElementActive(index)"
-                                :class="(element.visible !== true) ? 'd-none' : ''"
-                                >
+                                :class="(element.visible !== true) ? 'd-none' : ''">
                                     <img :src="'./img/avatar' + element.avatar + '.jpg'" alt="" class="me-2">
                                     <div>
                                         <p class="contact-name">
@@ -107,7 +84,6 @@
                                     </div>
                                 </li>
                             </ul>
-                        
                         </div>
                     </div>
 
@@ -116,10 +92,7 @@
                         <!-- INFO ABOUT THE SELECTED CONTACT -->
                         <div class="contact-info-container">
                             <div class="contact-info p-2 d-flex justify-content-between">
-                                <!-- IF THE SEARCH BAR IS EMPTY IT WILL WORK THIS <DIV> -->
-                                <div class="d-flex" 
-                                v-if="searchContact == ''"
-                                >
+                                <div class="d-flex">
                                     <img :src="'./img/avatar' + contacts[activeIndex].avatar + '.jpg'" alt="">
                                     <div class="d-flex flex-column justify-content-center">
                                         <p class="contact-name m-0">
@@ -130,21 +103,6 @@
                                         </span>
                                     </div>
                                 </div>
-                                <!-- IF THE USER TYPES SOMETHING IN THE SEARCH BAR IT WILL WORK THIS <DIV> -->
-                                <div class="d-flex" 
-                                v-if="searchContact !== ''"
-                                >
-                                    <img :src="'./img/avatar' + contacts[activeIndex].avatar + '.jpg'" alt="">
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <p class="contact-name m-0">
-                                            {{contacts[activeIndex].name}}
-                                        </p>
-                                        <span>
-                                            Ultimo accesso oggi alle {{getTimeFormat(contacts[activeIndex])}}
-                                        </span>
-                                    </div>
-                                </div>
-                                
                                 <div class="icons-container d-flex align-items-center">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                     <i class="fa-solid fa-paperclip"></i>
@@ -158,24 +116,14 @@
                                 <div class="message-container">
                                     <div class="sent-message-container">
                                         <ul>
-                                            <template
-                                            v-if="searchContact == ''"
-                                            >
                                             <li v-for="(element, index) in contacts[activeIndex].messages"
-                                            :class="(element.status == 'sent') ? 'sent-message col-5 offset-7' : 'received-message col-5' "
-                                            >
+                                            :class="(element.status == 'sent') ? 'sent-message' : 'received-message' ">
                                             {{element.message}}
-                                            </li>
-                                            </template>
-                                            <template
-                                            v-if="searchContact !== ''"
-                                            >
-                                            <li v-for="(element, index) in contacts[activeIndex].messages"
-                                            :class="(element.status == 'sent') ? 'sent-message col-5 offset-7' : 'received-message col-5' "
-                                            >
-                                            {{element.message}}
-                                            </li>
-                                            </template>
+                                            
+                                            <div class="drop-down-menu">
+                                                <i class="fa-solid fa-caret-down"></i>
+                                            </div>
+                                            </li>                                            
                                         </ul>
                                     </div>
                                 </div>

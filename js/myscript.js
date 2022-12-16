@@ -178,23 +178,15 @@ createApp({
             in this way I will be able to call that element for the contanct-info
             and for the chat's messages.*/
         getElementActive: function(index){
-            this.searchContact = '';
-            for (i=0; i<this.contacts.length; i++){
-                if (this.contacts[i].visible === true){
-                    this.contacts[i].visible = !this.contacts[i].visible;
-                }
-            }
-            this.contacts[index].visible = !this.contacts[index].visible;
             this.activeIndex = index;
         },
         searchTheContact: function(){
+            
             for (i=0; i<this.contacts.length; i++){
                 if (this.contacts[i].visible === true){
                     this.contacts[i].visible = !this.contacts[i].visible;
                 }
-            }
-            for (i=0; i<this.contacts.length; i++){
-                if (this.contacts[i].name.toLowerCase().includes(this.searchContact) === true){
+                if (this.contacts[i].name.toLowerCase().includes(this.searchContact.toLowerCase()) === true){
                     this.contacts[i].visible = true;
                 }
             }
