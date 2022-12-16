@@ -181,7 +181,6 @@ createApp({
             this.activeIndex = index;
         },
         searchTheContact: function(){
-            
             for (i=0; i<this.contacts.length; i++){
                 if (this.contacts[i].visible === true){
                     this.contacts[i].visible = !this.contacts[i].visible;
@@ -192,8 +191,7 @@ createApp({
             }
         },
         getTimeFormat: function(element){
-            let dateAndTIme = element.messages[element.messages.length - 1].date.split(' ');
-            let time = dateAndTIme[1].split(':');
+            let time = element.toString().split(' ')[1].split(':');
             time = time[0] + ':' + time[1];
             return time
         },
@@ -206,7 +204,6 @@ createApp({
         },
         sendNewMessage: function(){
             let chat = document.querySelector('.chat');
-            this.chatWidth = chat;
             chat.scrollTo(0, chat.scrollHeight*2);
             this.contacts[this.activeIndex].messages.push({
             date: '15/12/2022 18:15:00',
@@ -220,4 +217,3 @@ createApp({
         this.getElementActive(this.activeIndex);
     }
 }).mount('#app')
-

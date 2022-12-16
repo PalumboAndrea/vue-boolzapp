@@ -79,7 +79,7 @@
                                             {{element.messages[element.messages.length - 1].message}}
                                         </p>
                                         <span class="time p-3">
-                                            {{getTimeFormat(element)}}
+                                            {{getTimeFormat(element.messages[element.messages.length - 1].date)}}
                                         </span>
                                     </div>
                                 </li>
@@ -117,8 +117,11 @@
                                     <div class="sent-message-container">
                                         <ul>
                                             <li v-for="(element, index) in contacts[activeIndex].messages"
-                                            :class="(element.status == 'sent') ? 'sent-message' : 'received-message' ">
+                                            :class="(element.status == 'sent') ? 'sent-message col-5' : 'received-message col-5' ">
                                             {{element.message}}
+                                            <span>
+                                                {{getTimeFormat(element.date)}}
+                                            </span>
                                             
                                             <div class="drop-down-menu">
                                                 <i class="fa-solid fa-caret-down"></i>
