@@ -166,10 +166,11 @@ createApp({
                     ],
                 }
             ],
-            arrayForActiveIndex: [],
+            
             arrayForSearch: [],
             newMessage: '',
             searchContact: '',
+            activeIndex: 0,
         }
     },
     methods: {
@@ -178,14 +179,24 @@ createApp({
             in this way I will be able to call that element for the contanct-info
             and for the chat's messages.*/
         getElementActive: function(index){
-            this.arrayForActiveIndex.splice(0, 1);
+            console.log(index)
             for (i=0; i<this.contacts.length; i++){
                 if (this.contacts[i].visible === true){
                     this.contacts[i].visible = !this.contacts[i].visible;
                 }
             }
             this.contacts[index].visible = !this.contacts[index].visible;
-            this.arrayForActiveIndex.push(this.contacts[index]);
+            this.activeIndex = index;
+        },
+        getElementActiveSearch: function(index){
+            console.log(index)
+            for (i=0; i<this.arrayForSearch.length; i++){
+                if (this.arrayForSearch[i].visible === true){
+                    this.arrayForSearch[i].visible = !this.arrayForSearch[i].visible;
+                }
+            }
+            this.arrayForSearch[index].visible = !this.arrayForSearch[index].visible;
+            this.activeIndex = index;
         },
         getTimeFormat: function(element){
             let dateAndTIme = element.messages[element.messages.length - 1].date.split(' ');
@@ -194,7 +205,7 @@ createApp({
             return time
         },
         receivedNewMessage: function(){
-            this.arrayForActiveIndex[0].messages.push({
+            this.contacts[this.activeIndex].messages.push({
             date: '15/12/2022 18:15:01',
             message: 'OK!',
             status: 'received' });
@@ -203,7 +214,7 @@ createApp({
             let chat = document.querySelector('.chat');
             console.log(chat.scrollHeight);
             chat.scrollTo(0, chat.scrollHeight*2);
-            this.arrayForActiveIndex[0].messages.push({
+            this.contacts[this.activeIndex].messages.push({
             date: '15/12/2022 18:15:00',
             message: this.newMessage,
             status: 'sent' });
@@ -218,13 +229,13 @@ createApp({
                 }
             }
             console.log(this.arrayForSearch);
+
         },
     },
     created(){
-        this.getElementActive(0);
+        this.getElementActive(this.activeIndex);
     }
 }).mount('#app')
 
-
-// SISTEMARE I VARI V-IF SULLA PARTE DESTRA DELLA CHAT
 // SISTEMARE LA FUNZIONE searchTheContact O FARNE UN'ALTRA ASSOCIATA A QUELLA
+
