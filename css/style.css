@@ -263,7 +263,15 @@ p{
     padding: 5px;
 }
 
-.drop-down-menu i{
+.drop-down-menu-container:active .drop-down-menu{
+    display: block;
+}
+
+.drop-down-menu-container{
+    position: relative;
+}
+
+.drop-down-menu-container i{
   margin: 0 0 0 5px;
   font-size: 1.4rem;
   position: absolute;
@@ -271,8 +279,18 @@ p{
   display: none;
 }
 
-.sent-message-container li:hover .drop-down-menu i{
+.sent-message-container li:hover .drop-down-menu-container i{
     display: block;
+}
+
+.drop-down-menu{
+    display: none;
+    height: 100px;
+    width: 100px;
+    background-color: rgb(255,255,255);
+    border: 1px solid grey;
+    position: absolute;
+
 }
 
 

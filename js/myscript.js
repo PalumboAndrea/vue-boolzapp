@@ -173,10 +173,6 @@ createApp({
         }
     },
     methods: {
-        /*  this function permit to change clicked contact visible data in true
-            and add the entire element to a new array (arrayForActiveIndex),
-            in this way I will be able to call that element for the contanct-info
-            and for the chat's messages.*/
         getElementActive: function(index){
             this.activeIndex = index;
         },
@@ -211,6 +207,14 @@ createApp({
             status: 'sent' });
             setTimeout(this.receivedNewMessage, 1000);
             this.newMessage = '';
+        },
+        getDropDownMenu: function(){
+            let dropDownMenuContainer = document.querySelector('.drop-down-menu-container');
+
+            let dropDownMenuElement = document.createElement('div');
+            dropDownMenuElement.classList.add('drop-down-menu', 'd-block');
+            dropDownMenuElement.innerHTML = 'Delete';
+            dropDownMenuContainer.append(dropDownMenuElement);
         },
     },
     created(){

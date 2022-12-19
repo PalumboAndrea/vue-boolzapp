@@ -14,7 +14,7 @@
         <!-- FONTAWSOME -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-        <title>Document</title>
+        <title>Boolzapp</title>
     </head>
 
     <body>
@@ -99,7 +99,7 @@
                                             {{contacts[activeIndex].name}}
                                         </p>
                                         <span>
-                                            Ultimo accesso oggi alle {{getTimeFormat(contacts[activeIndex])}}
+                                            Ultimo accesso oggi alle {{getTimeFormat(contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].date)}}
                                         </span>
                                     </div>
                                 </div>
@@ -123,8 +123,10 @@
                                                 {{getTimeFormat(element.date)}}
                                             </span>
                                             
-                                            <div class="drop-down-menu">
+                                            <div class="drop-down-menu-container" @click="getDropDownMenu">
+
                                                 <i class="fa-solid fa-caret-down"></i>
+                                             
                                             </div>
                                             </li>                                            
                                         </ul>
@@ -149,6 +151,8 @@
             
         </div>
 
+        <!-- Import Luxon -->
+        <script src="luxon.js"></script>
         <!-- Import Vue -->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <!-- JAVA SCRIPT -->
