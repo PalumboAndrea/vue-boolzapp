@@ -283,10 +283,12 @@ p{
     display: none;
     width: 130px;
     background-color: rgb(255,255,255);
-    border: 1px solid grey;
+    border-radius: 5px;
     transform: translate(-100%, 0);
     position: absolute;
     margin: 5px;
+    padding: 5px 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .message-container li:hover .drop-down-menu-container i
@@ -299,8 +301,9 @@ p{
     z-index: 5;
 }
 
-.delete-message{
-    cursor: pointer;
+.drop-down-menu:hover{
+   background-color: rgb(232,235,235);
+   cursor: pointer;
 }
 
 

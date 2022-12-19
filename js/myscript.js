@@ -172,8 +172,8 @@ createApp({
             chatWidth: 0,
             local: luxon.DateTime.now().day + '/' + luxon.DateTime.now().month + '/' + luxon.DateTime.now().year + ' ' +
             luxon.DateTime.now().hour + ':' + luxon.DateTime.now().minute + ':' + luxon.DateTime.now().second,
-            onlyTheDay: '',
-            dropDownMenuIndex: 0,
+            day: '',
+            dropDownMenuIndex: null,
         }
     },
     methods: {
@@ -192,11 +192,11 @@ createApp({
         },
         getDayFormat: function(element){
             if (this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 1].status == 'received'){
-                this.onlyTheDay = element.toString().split(' ')[0];
+                this.day = element.toString().split(' ')[0];
             } else {
-                this.onlyTheDay = this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 1].date.toString().split(' ')[0];
+                this.day = this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 2].date.toString().split(' ')[0];
             }
-            return this.onlyTheDay
+            return this.day
         },
         getTimeFormat: function(element){
             let time = element.toString().split(' ')[1].split(':');
@@ -220,14 +220,11 @@ createApp({
             this.newMessage = '';
         },
         getDropDownMenu: function(index){
-            if(this.dropDownMenuIndex !== index){
+            if(this.dropDownMenuIndex !== index || this.dropDownMenuIndex !== null){
                 this.dropDownMenuIndex = index;
             } else {
                 this.dropDownMenuIndex = null;
             }
-        },
-        removeDropDownMenu: function (){
-            this.dropDownMenuIndex = null;
         },
         deleteMessage: function (index){
             this.contacts[this.activeIndex].messages.splice(index, 1)
@@ -236,6 +233,5 @@ createApp({
     },
     created(){
         this.getElementActive(this.activeIndex);
-        this.getDropDownMenu()
     }
 }).mount('#app')

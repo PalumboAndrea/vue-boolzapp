@@ -22,7 +22,7 @@
         <div id="app">
 
             <main class="position-relative d-flex flex-column justify-content-center align-items-center">
-                <!-- The main chat container is divided because of the two backgrouds divs -->
+                <!-- The main chat container is divided because of the two backgrounds divs -->
                 <div id="main-chat-container">
 
                     <!-- USER NAME AND ACTIVE CHAT'S LIST -->
@@ -99,7 +99,7 @@
                                             {{contacts[activeIndex].name}}
                                         </p>
                                         <span>
-                                            Ultimo accesso il {{getDayFormat(contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].date)}}
+                                            Ultimo accesso {{getDayFormat(contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].date)}}
                                             alle {{getTimeFormat(contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].date)}}
                                         </span>
                                     </div>
@@ -117,24 +117,24 @@
                                 <div class="message-container">
                                     <div class="sent-message-container">
                                         <ul>
+                                            <!-- LIST OF EVERY MESSAGE -->
                                             <li v-for="(element, index) in contacts[activeIndex].messages"
                                             :class="(element.status == 'sent') ? 'sent-message col-5' : 'received-message col-5'"
-                                            >
-                                            {{element.message}}
-                                            <span>
-                                                {{getTimeFormat(element.date)}}
-                                            </span>
-                                            
-                                            <div class="drop-down-menu-container">
-
-                                                <i class="fa-solid fa-caret-down" @click="getDropDownMenu(index)"></i>
-                                                <div class="drop-down-menu" :class="(dropDownMenuIndex == index && element.status == 'sent') ? 'selected' : ''">
-                                                    <p class="delete-message"
-                                                    @click="deleteMessage(index)">Delete Message</p>
+                                            @mouseleave="getDropDownMenu">
+                                                {{element.message}}
+                                                <span>
+                                                    {{getTimeFormat(element.date)}}
+                                                </span>
+                                                <div class="drop-down-menu-container" :class="(element.status !== 'sent') ? 'd-none' : ''">
+                                                    <i class="fa-solid fa-caret-down" @click="getDropDownMenu(index)"></i>
+                                                    <div class="drop-down-menu" :class="(dropDownMenuIndex == index && element.status == 'sent') ? 'selected' : ''">
+                                                        <p @click="deleteMessage(index)">
+                                                            Delete Message
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                             
-                                            </div>
-                                            </li>                                            
+                                            </li>    
+
                                         </ul>
                                     </div>
                                 </div>
@@ -148,13 +148,11 @@
                     </div>
                 </div>
 
-
                 <div class="upper-background"></div>
                 <div class="lower-background"></div>
 
             </main>
 
-            
         </div>
 
         <!-- Import Luxon -->
