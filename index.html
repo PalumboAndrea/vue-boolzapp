@@ -118,18 +118,20 @@
                                     <div class="sent-message-container">
                                         <ul>
                                             <li v-for="(element, index) in contacts[activeIndex].messages"
-                                            :class="(element.status == 'sent') ? 'sent-message col-5' : 'received-message col-5' ">
+                                            :class="(element.status == 'sent') ? 'sent-message col-5' : 'received-message col-5'"
+                                            >
                                             {{element.message}}
                                             <span>
                                                 {{getTimeFormat(element.date)}}
                                             </span>
                                             
-                                            <div class="drop-down-menu-container active">
+                                            <div class="drop-down-menu-container">
 
-                                                <i class="fa-solid fa-caret-down" @click="getDropDownMenu"></i>
-                                                <div class="drop-down-menu" ref="drop"
-                                                
-                                                ></div>
+                                                <i class="fa-solid fa-caret-down" @click="getDropDownMenu(index)"></i>
+                                                <div class="drop-down-menu" :class="(dropDownMenuIndex == index && element.status == 'sent') ? 'selected' : ''">
+                                                    <p class="delete-message"
+                                                    @click="deleteMessage(index)">Delete Message</p>
+                                                </div>
                                              
                                             </div>
                                             </li>                                            

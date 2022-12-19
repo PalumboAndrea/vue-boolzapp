@@ -173,6 +173,7 @@ createApp({
             local: luxon.DateTime.now().day + '/' + luxon.DateTime.now().month + '/' + luxon.DateTime.now().year + ' ' +
             luxon.DateTime.now().hour + ':' + luxon.DateTime.now().minute + ':' + luxon.DateTime.now().second,
             onlyTheDay: '',
+            dropDownMenuIndex: 0,
         }
     },
     methods: {
@@ -193,7 +194,7 @@ createApp({
             if (this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 1].status == 'received'){
                 this.onlyTheDay = element.toString().split(' ')[0];
             } else {
-                this.onlyTheDay = this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 2].date.toString().split(' ')[0];
+                this.onlyTheDay = this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 1].date.toString().split(' ')[0];
             }
             return this.onlyTheDay
         },
@@ -218,12 +219,23 @@ createApp({
             setTimeout(this.receivedNewMessage, 1000);
             this.newMessage = '';
         },
-        getDropDownMenu: function(){
-            console.log(this.$refs.drop.classList);
-            
+        getDropDownMenu: function(index){
+            if(this.dropDownMenuIndex !== index){
+                this.dropDownMenuIndex = index;
+            } else {
+                this.dropDownMenuIndex = null;
+            }
         },
+        removeDropDownMenu: function (){
+            this.dropDownMenuIndex = null;
+        },
+        deleteMessage: function (index){
+            this.contacts[this.activeIndex].messages.splice(index, 1)
+            this.dropDownMenuIndex = null;
+        }
     },
     created(){
         this.getElementActive(this.activeIndex);
+        this.getDropDownMenu()
     }
 }).mount('#app')

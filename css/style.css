@@ -281,11 +281,12 @@ p{
 
 .drop-down-menu{
     display: none;
-    height: 100px;
-    width: 100px;
+    width: 130px;
     background-color: rgb(255,255,255);
     border: 1px solid grey;
+    transform: translate(-100%, 0);
     position: absolute;
+    margin: 5px;
 }
 
 .message-container li:hover .drop-down-menu-container i
@@ -295,6 +296,11 @@ p{
 
 .selected{
     display: block;
+    z-index: 5;
+}
+
+.delete-message{
+    cursor: pointer;
 }
 
 
