@@ -99,7 +99,8 @@
                                             {{contacts[activeIndex].name}}
                                         </p>
                                         <span>
-                                            Ultimo accesso oggi alle {{getTimeFormat(contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].date)}}
+                                            Ultimo accesso il {{getDayFormat(contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].date)}}
+                                            alle {{getTimeFormat(contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].date)}}
                                         </span>
                                     </div>
                                 </div>
@@ -152,7 +153,7 @@
         </div>
 
         <!-- Import Luxon -->
-        <script src="luxon.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.1/build/global/luxon.min.js"></script>
         <!-- Import Vue -->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <!-- JAVA SCRIPT -->

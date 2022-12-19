@@ -170,6 +170,8 @@ createApp({
             searchContact: '',
             activeIndex: 0,
             chatWidth: 0,
+            local: luxon.DateTime.now().day + '/' + luxon.DateTime.now().month + '/' + luxon.DateTime.now().year + ' ' +
+            luxon.DateTime.now().hour + ':' + luxon.DateTime.now().minute + ':' + luxon.DateTime.now().second,
         }
     },
     methods: {
@@ -186,6 +188,15 @@ createApp({
                 }
             }
         },
+        getDayFormat: function(element){
+            if (this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 1].status == 'received'){
+                let date = element.toString().split(' ')[0];
+                return date
+            } else {
+                date = this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 2].date.toString().split(' ')[0];
+                console.log(this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 2].date.toString().split(' ')[0])
+            }
+        },
         getTimeFormat: function(element){
             let time = element.toString().split(' ')[1].split(':');
             time = time[0] + ':' + time[1];
@@ -193,16 +204,15 @@ createApp({
         },
         receivedNewMessage: function(){
             this.contacts[this.activeIndex].messages.push({
-            date: '15/12/2022 18:15:01',
+            date: this.local,
             message: 'OK!',
             status: 'received' });
-            this.chatWidth.scrollTo(0, 1000)
         },
         sendNewMessage: function(){
             let chat = document.querySelector('.chat');
             chat.scrollTo(0, chat.scrollHeight*2);
             this.contacts[this.activeIndex].messages.push({
-            date: '15/12/2022 18:15:00',
+            date: this.local,
             message: this.newMessage,
             status: 'sent' });
             setTimeout(this.receivedNewMessage, 1000);
@@ -210,7 +220,6 @@ createApp({
         },
         getDropDownMenu: function(){
             let dropDownMenuContainer = document.querySelector('.drop-down-menu-container');
-
             let dropDownMenuElement = document.createElement('div');
             dropDownMenuElement.classList.add('drop-down-menu', 'd-block');
             dropDownMenuElement.innerHTML = 'Delete';

@@ -167,6 +167,10 @@ p{
     max-width: 230px;
 }
 
+.contact-info span{
+    max-width: 100%;
+}
+
 .time{
     font-size: 0.7rem;
     color: lightgrey;
