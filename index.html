@@ -69,7 +69,7 @@
                                 <li class="contact p-2 d-flex align-items-center"
                                 v-for="(element, index) in contacts"
                                 @click="getElementActive(index)"
-                                :class="(element.visible !== true) ? 'd-none' : ''">
+                                :class="(element.visible !== true) ? 'd-none' : '', (activeIndex == index) ? 'background-grey' : ''">
                                     <img :src="'./img/avatar' + element.avatar + '.jpg'" alt="" class="me-2">
                                     <div>
                                         <p class="contact-name">

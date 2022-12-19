@@ -172,6 +172,7 @@ createApp({
             chatWidth: 0,
             local: luxon.DateTime.now().day + '/' + luxon.DateTime.now().month + '/' + luxon.DateTime.now().year + ' ' +
             luxon.DateTime.now().hour + ':' + luxon.DateTime.now().minute + ':' + luxon.DateTime.now().second,
+            onlyTheDay: '',
         }
     },
     methods: {
@@ -190,12 +191,11 @@ createApp({
         },
         getDayFormat: function(element){
             if (this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 1].status == 'received'){
-                let date = element.toString().split(' ')[0];
-                return date
+                this.onlyTheDay = element.toString().split(' ')[0];
             } else {
-                date = this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 2].date.toString().split(' ')[0];
-                console.log(this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 2].date.toString().split(' ')[0])
+                this.onlyTheDay = this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length - 2].date.toString().split(' ')[0];
             }
+            return this.onlyTheDay
         },
         getTimeFormat: function(element){
             let time = element.toString().split(' ')[1].split(':');
