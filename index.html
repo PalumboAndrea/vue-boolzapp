@@ -124,9 +124,12 @@
                                                 {{getTimeFormat(element.date)}}
                                             </span>
                                             
-                                            <div class="drop-down-menu-container" @click="getDropDownMenu">
+                                            <div class="drop-down-menu-container active">
 
-                                                <i class="fa-solid fa-caret-down"></i>
+                                                <i class="fa-solid fa-caret-down" @click="getDropDownMenu"></i>
+                                                <div class="drop-down-menu" ref="drop"
+                                                
+                                                ></div>
                                              
                                             </div>
                                             </li>                                            

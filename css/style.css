@@ -267,10 +267,6 @@ p{
     padding: 5px;
 }
 
-.drop-down-menu-container:active .drop-down-menu{
-    display: block;
-}
-
 .drop-down-menu-container{
     position: relative;
 }
@@ -283,10 +279,6 @@ p{
   display: none;
 }
 
-.sent-message-container li:hover .drop-down-menu-container i{
-    display: block;
-}
-
 .drop-down-menu{
     display: none;
     height: 100px;
@@ -294,7 +286,15 @@ p{
     background-color: rgb(255,255,255);
     border: 1px solid grey;
     position: absolute;
+}
 
+.message-container li:hover .drop-down-menu-container i
+{
+    display: block;
+}
+
+.selected{
+    display: block;
 }
 
 

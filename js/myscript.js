@@ -219,11 +219,8 @@ createApp({
             this.newMessage = '';
         },
         getDropDownMenu: function(){
-            let dropDownMenuContainer = document.querySelector('.drop-down-menu-container');
-            let dropDownMenuElement = document.createElement('div');
-            dropDownMenuElement.classList.add('drop-down-menu', 'd-block');
-            dropDownMenuElement.innerHTML = 'Delete';
-            dropDownMenuContainer.append(dropDownMenuElement);
+            console.log(this.$refs.drop.classList);
+            
         },
     },
     created(){
